@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Book">
+    <insert id="insertBook">
+        insert into Book (title, writer, category, publisher, rentok, isbn)
+        values
+        (#{title} , #{writer} , #{category}, #{publisher}, #{rentok}, #{isbn})
+    </insert>
+    <update id="updateBook">
+        update Book
+        set title=#{title}, writer=#{writer}, category=#{category}, publisher=#{publisher}, rentok=#{rentok}, isbn=#{isbn}
+        where seq=#{seq}
+    </update>
+    <delete id="deleteBook">
+        delete from Book where seq=#{seq}
+    </delete>
+    <select id="getBook" resultType="book">
+        select * from Book where seq=#{seq}
+    </select>
+    <select id="getBookList" resultType="book">
+        select * from Book order by seq desc
+    </select>
+</mapper>
+
